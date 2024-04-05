@@ -41,9 +41,18 @@ export class Scene {
         ctx.save();
         // 随便绘制一个图形
         ctx.fillStyle = "#fa0000";
-        ctx.fillRect(0, 0, 20, 20);
+        ctx.fillRect(0, 0, 200, 200);
         ctx.fill();
+        ctx.restore();
 
+        /** drawing rulers */
+        if (setting.get('enableRuler')) {
+            ctx.save();
+            ctx.translate(-dx, -dy);
+            ctx.scale(dpr / zoom, dpr / zoom);
+            this.editor.ruler.draw();
+            ctx.restore();
+        }
         ctx.restore();
 
         this.eventEmitter.emit('render');

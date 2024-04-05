@@ -12,6 +12,14 @@ export class Setting {
         ],
         offsetX: 0, // mouse offset
         offsetY: 0,
+        /**** ruler ****/
+        enableRuler: true,
+        minStepInViewport: 50, // 视口区域下的最小步长
+        rulerBgColor: '#fff',
+        rulerStroke: '#e6e6e6',
+        rulerMarkStroke: '#c1c1c1',
+        rulerWidth: 15, // 宽度
+        rulerMarkSize: 4, // 刻度高度
     };
     set(key, value) {
         this.value[key] = value;

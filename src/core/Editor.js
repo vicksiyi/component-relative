@@ -3,6 +3,9 @@ import { ZoomManager } from "./ZoomManager.js";
 import { Setting } from "./Setting.js";
 import { Scene } from "./Scene.js";
 import { HostEventManager } from "./HostEventManager.js";
+import { Ruler } from "./Ruler.js";
+import { viewportCoordsToSceneUtil } from "../common/utils.js";
+
 export class Editor {
     containerElement;
     canvasElement;
@@ -21,17 +24,28 @@ export class Editor {
         this.zoomManager = new ZoomManager(this);
 
         this.hostEventManager = new HostEventManager(this);
+        this.ruler = new Ruler(this);
         this.hostEventManager.bindHotkeys();
 
         this.viewportManager.setViewport({
-            x: -width / 2,
-            y: -height / 2,
+            x: 0,
+            y: 0,
             width,
             height,
         });
         Promise.resolve().then(() => {
             this.render();
         });
+    }
+    /**
+     * viewport coords to scene coords
+     *
+     * reference: https://mp.weixin.qq.com/s/uvVXZKIMn1bjVZvUSyYZXA
+     */
+    viewportCoordsToScene(x, y, round = false) {
+        const zoom = this.zoomManager.getZoom();
+        const { x: scrollX, y: scrollY } = this.viewportManager.getViewport();
+        return viewportCoordsToSceneUtil(x, y, zoom, scrollX, scrollY, round);
     }
     getCursorXY(event) {
         return {
