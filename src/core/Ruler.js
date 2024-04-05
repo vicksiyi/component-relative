@@ -80,7 +80,8 @@ export class Ruler {
             ctx.lineTo(x, y + setting.get('rulerMarkSize'));
             ctx.stroke();
             ctx.closePath();
-            ctx.fillText(String(startXInScene), x, y + 14);
+            ctx.font = `${setting.get('rulerFontSize')}px sans-serif`;
+            ctx.fillText(String(startXInScene), x, y + setting.get('rulerFontSize') * 2);
             startXInScene += stepInScene;
         }
     }
@@ -110,7 +111,8 @@ export class Ruler {
             ctx.stroke();
             ctx.closePath();
             rotateInCanvas(ctx, -HALF_PI, x, y);
-            ctx.fillText(String(startYInScene), x, y + 14);
+            ctx.font = `${setting.get('rulerFontSize')}px sans-serif`;
+            ctx.fillText(String(startYInScene), x, y + setting.get('rulerFontSize') * 2);
             rotateInCanvas(ctx, HALF_PI, x, y);
             startYInScene += stepInScene;
         }
