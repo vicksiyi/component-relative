@@ -70,18 +70,19 @@ export class Ruler {
         endXInScene = getClosestTimesVal(endXInScene, stepInScene);
 
         ctx.textAlign = 'center';
-        const y = 0;
+        const y = viewport.y;
         while (startXInScene <= endXInScene) {
             ctx.strokeStyle = setting.get('rulerMarkStroke');
             ctx.fillStyle = setting.get('rulerMarkStroke');
-            const x = nearestPixelVal((startXInScene - viewport.x) * zoom);
+            const x = nearestPixelVal(startXInScene);
             ctx.beginPath();
             ctx.moveTo(x, y);
-            ctx.lineTo(x, y + setting.get('rulerMarkSize'));
+            ctx.lineTo(x, y + setting.get('rulerMarkSize') / zoom);
+            ctx.lineWidth = setting.get('rulerMarkSizeWidth') / zoom;
             ctx.stroke();
             ctx.closePath();
-            ctx.font = `${setting.get('rulerFontSize')}px sans-serif`;
-            ctx.fillText(String(startXInScene), x, y + setting.get('rulerFontSize') * 2);
+            ctx.font = `${setting.get('rulerFontSize') / zoom}px sans-serif`;
+            ctx.fillText(String(startXInScene), x, y + setting.get('rulerFontSize') * 2 / zoom);
             startXInScene += stepInScene;
         }
     }
@@ -100,19 +101,20 @@ export class Ruler {
         const endY = viewport.height;
         let endYInScene = viewport.y + endY / zoom;
         endYInScene = getClosestTimesVal(endYInScene, stepInScene);
-        const x = 0;
+        const x = viewport.x;
         ctx.textAlign = 'center';
         while (startYInScene <= endYInScene) {
             ctx.fillStyle = setting.get('rulerMarkStroke');
-            const y = nearestPixelVal((startYInScene - viewport.y) * zoom);
+            const y = nearestPixelVal(startYInScene);
             ctx.beginPath();
             ctx.moveTo(x, y);
-            ctx.lineTo(x + setting.get('rulerMarkSize'), y);
+            ctx.lineTo(x + setting.get('rulerMarkSize') / zoom, y);
+            ctx.lineWidth = setting.get('rulerMarkSizeWidth') / zoom;
             ctx.stroke();
             ctx.closePath();
             rotateInCanvas(ctx, -HALF_PI, x, y);
-            ctx.font = `${setting.get('rulerFontSize')}px sans-serif`;
-            ctx.fillText(String(startYInScene), x, y + setting.get('rulerFontSize') * 2);
+            ctx.font = `${setting.get('rulerFontSize') / zoom}px sans-serif`;
+            ctx.fillText(String(startYInScene), x, y + setting.get('rulerFontSize') * 2 / zoom);
             rotateInCanvas(ctx, HALF_PI, x, y);
             startYInScene += stepInScene;
         }

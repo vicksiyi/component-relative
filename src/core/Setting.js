@@ -20,7 +20,8 @@ export class Setting {
         rulerMarkStroke: '#c1c1c1',
         rulerWidth: 15, // 宽度
         rulerMarkSize: 4, // 刻度高度
-        rulerFontSize: 6, // 刻度字体大小
+        rulerMarkSizeWidth: 2, // 刻度宽度
+        rulerFontSize: 12, // 刻度字体大小
     };
     set(key, value) {
         this.value[key] = value;

@@ -47,11 +47,7 @@ export class Scene {
 
         /** drawing rulers */
         if (setting.get('enableRuler')) {
-            ctx.save();
-            ctx.translate(-dx, -dy);
-            ctx.scale(dpr / zoom, dpr / zoom);
             this.editor.ruler.draw();
-            ctx.restore();
         }
         ctx.restore();
 
