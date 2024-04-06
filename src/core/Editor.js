@@ -10,10 +10,10 @@ export class Editor {
     containerElement;
     canvasElement;
     ctx;
-    constructor(options) {
-        this.containerElement = options?.containerElement ?? document.body;
-        const width = options?.width ?? window.innerWidth;
-        const height = options?.height ?? window.innerHeight;
+    constructor() {
+        this.containerElement = document.body;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
         this.canvasElement = document.createElement('canvas');
         this.containerElement.appendChild(this.canvasElement);
         this.ctx = this.canvasElement.getContext('2d');
@@ -33,9 +33,7 @@ export class Editor {
             width,
             height,
         });
-        Promise.resolve().then(() => {
-            this.render();
-        });
+        this.render();
     }
     /**
      * viewport coords to scene coords

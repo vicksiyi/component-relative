@@ -11,6 +11,7 @@ export class HostEventManager {
     }
     bindHotkeys() {
         this.bindWheelEvent();
+        this.bindResizeEvent();
     }
     /**
      * bind wheel event, to zoom or move canvas
@@ -56,6 +57,23 @@ export class HostEventManager {
         this.unbindHandlers.push(() => {
             editor.canvasElement.removeEventListener('wheel', onWheel);
             window.removeEventListener('wheel', preventDefaultScalePage);
+        });
+    }
+    /**
+     * bind resize event
+     */
+    bindResizeEvent() {
+        window.addEventListener('resize', () => {
+            const oldViewport = this.editor.viewportManager.getViewport();
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            this.editor.viewportManager.setViewport({
+                x: oldViewport.x,
+                y: oldViewport.y,
+                width,
+                height,
+            });
+            this.editor.render();
         });
     }
     destroy() {
