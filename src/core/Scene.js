@@ -107,8 +107,8 @@ export class Scene {
                 height += bound.height + offsetY;
             }
             const size = type2Size(node.type);
-            width = Math.max(width - offsetX, size);
-            height = Math.max(height - offsetY, size);
+            width = Math.max(width - offsetX, 0);
+            height = Math.max(height, height);
             x += width / 2;
             const info = { x, y, size, node };
             this.animatedTreeNodes.set(node.id, info);
@@ -119,7 +119,7 @@ export class Scene {
          * start 最开始source tree绘制的位置
          * gap 每个source tree之间的偏移
          */
-        const start = { x: 0, y: 0 }, gap = 50;
+        const start = { x: 0, y: 0 }, gap = 100;
         let maxHeight = 0;
         /**
          * 计算所有souces的位置
