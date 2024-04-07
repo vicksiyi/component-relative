@@ -10,6 +10,10 @@
     body {
         margin: 0;
         overflow: hidden;
+        background-color: var(--body-bg);
+        color: var(--body-fg);
+        --body-bg: #222;
+        --body-fg: #BBB;
     }
 </style>
 
@@ -17,6 +21,68 @@
     <script type="module">
         import { Editor } from "./src/core/Editor.js";
         const editor = new Editor();
+        editor.loadData({
+            nodes: {
+                '0:1': {
+                    id: '0:1',
+                    name: 'master1',
+                    type: 'symbolMaster',
+                    fromId: null,
+                    children: ['0:3', '0:5', '0:6']
+                },
+                '0:2': {
+                    id: '0:2',
+                    name: 'master2',
+                    type: 'symbolMaster',
+                    fromId: null,
+                    children: ['0:4']
+                },
+                '0:3': {
+                    id: '0:3',
+                    name: 'master-child',
+                    type: 'rectangle',
+                    fromId: null,
+                    children: []
+                },
+                '0:4': {
+                    id: '0:4',
+                    name: 'master-child1',
+                    type: 'rectangle',
+                    fromId: null,
+                    children: []
+                },
+                '0:5': {
+                    id: '0:5',
+                    name: 'master-child2',
+                    type: 'rectangle',
+                    fromId: null,
+                    children: []
+                },
+                '0:6': {
+                    id: '0:6',
+                    name: 'master-child3',
+                    type: 'rectangle',
+                    fromId: null,
+                    children: []
+                },
+                '1:0': {
+                    id: '1:0',
+                    name: 'instance',
+                    type: 'symbolInstance',
+                    fromId: '0:1',
+                    children: ['1:1']
+                },
+                '1:1': {
+                    id: '1:1',
+                    name: 'instance-child',
+                    type: 'rectangle',
+                    fromId: '0:4',
+                    children: []
+                }
+            },
+            sources: ['0:1', '0:2'],
+            root: '1:0'
+        });
     </script>
 </body>
 

@@ -1,7 +1,7 @@
 export class Setting {
     value = {
         /***** paint ****/
-        canvasBgColor: '#f4f4f4',
+        canvasBgColor: '#222',
         /*********** zoom *************/
         zoomStep: 0.2325,
         zoomMin: 0.015625,

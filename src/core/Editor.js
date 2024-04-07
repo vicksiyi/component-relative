@@ -35,6 +35,9 @@ export class Editor {
         });
         this.render();
     }
+    loadData(data) {
+        this.scene.load(data);
+    }
     /**
      * viewport coords to scene coords
      *

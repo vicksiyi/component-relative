@@ -63,3 +63,12 @@ export const nearestPixelVal = (n) => {
   const right = Math.ceil(n);
   return (n - left < right - n ? left : right) + 0.5;
 };
+
+/**
+ * 根据ID获取颜色
+ */
+export const arbitraryColorFromID = (id) => {
+  let hash = 0
+  for (const c of id) hash = Math.imul(hash ^ c.charCodeAt(0), 0x1000193)
+  return '#' + (0x1000000 | hash).toString(16).slice(-6)
+}
