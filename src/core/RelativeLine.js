@@ -7,19 +7,20 @@ export class RelativeLine {
     ids = new Map; // string[]
     constructor(editor) {
         this.editor = editor;
-        /**
-         * 测试数据
-         */
-        this.ids.set('1:0', true);
-        this.ids.set('1:1', true);
     }
     clear() {
         this.ids.clear();
     }
-    add(id) {
+    active(id) {
         this.ids.set(id, true);
     }
+    has(id) {
+        return this.ids.has(id) && this.ids.get(id);
+    }
     remove(id) {
+        this.ids.set(id, false);
+    }
+    delete(id) {
         this.ids.delete(id);
     }
     draw() {
@@ -27,13 +28,14 @@ export class RelativeLine {
         const ids = this.ids;
         const ctx = this.editor.ctx;
         const animatedTreeNodes = this.editor.scene.animatedTreeNodes;
-        for (let [id, _] of ids) {
+        for (let [id, val] of ids) {
+            if (!val) continue;
             const startNode = animatedTreeNodes.get(id);
-            if(!startNode) break;
+            if(!startNode) continue;
             const to = startNode.node.fromId;
-            if (!to) break;
+            if (!to) continue;
             const endNode = animatedTreeNodes.get(to);
-            if (!endNode) break;
+            if (!endNode) continue;
             const color = arbitraryColorFromID(startNode.node.id);
             ctx.strokeStyle = color;
             ctx.beginPath();

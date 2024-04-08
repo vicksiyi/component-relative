@@ -109,6 +109,7 @@ export class Scene {
     load(data) {
         this.tree = new Tree({ data });
         this.calcPos();
+        this.bindEvent();
         this.render();
     }
     /**
@@ -167,6 +168,67 @@ export class Scene {
         */
         const gapSource = 100;
         visit(this.tree.root, width / 2, height + padding.y + gapSource);
+    }
+    /**
+     * 给节点绑定事件
+     */
+    bindEvent() {
+        const animatedTreeNodes = this.animatedTreeNodes;
+        const globalEventManager = this.editor.globalEventManager;
+        const relativeLine = this.editor.relativeLine;
+        /**
+         * 节点hover事件
+         */
+        for (let [_, detail] of animatedTreeNodes) {
+            const size = type2Size(detail.node.type);
+            globalEventManager.add('move', {
+                cursor: 'pointer',
+                bound: {
+                    x: detail.x,
+                    y: detail.y,
+                    w: size,
+                    h: size
+                }
+            });
+        }
+
+        const visit = (id, cb) => {
+            const nNode = this.animatedTreeNodes.get(id);
+            if (!nNode) return;
+            const node = nNode.node;
+            const size = type2Size(node.type);
+            globalEventManager.add('down', {
+                bound: {
+                    x: nNode.x,
+                    y: nNode.y,
+                    w: size,
+                    h: size
+                },
+                action: (e) => cb(node.id)
+            });
+            for (const child of node.children) {
+                visit(child, cb);
+            }
+        }
+        /**
+         * 开启/关闭关系线
+         */
+        visit(this.tree.root, (id) => {
+            if (relativeLine.has(id)) {
+                relativeLine.remove(id);
+            } else {
+                relativeLine.active(id);
+            }
+            this.editor.render();
+        });
+        /**
+         * 跳转选中节点
+         */
+        this.tree.sources.forEach(rootId => {
+            visit(rootId, (id) => {
+                console.log('选择节点', id);
+            });
+        })
     }
     on(eventName, handler) {
         this.eventEmitter.on(eventName, handler);

@@ -72,3 +72,12 @@ export const arbitraryColorFromID = (id) => {
   for (const c of id) hash = Math.imul(hash ^ c.charCodeAt(0), 0x1000193)
   return '#' + (0x1000000 | hash).toString(16).slice(-6)
 }
+
+/**
+ * 某个点是否在bound内 ，注意: bound中的x，y表示其中心
+ */
+export const isInBound = (bound, point) => {
+  const [startX, startY] = [bound.x - bound.w / 2, bound.y - bound.h / 2];
+  const [endX, endY] = [startX + bound.w, startY + bound.h];
+  return point.x >= startX && point.x <= endX && point.y >= startY && point.y <= endY;
+}
