@@ -117,7 +117,7 @@ export class Scene {
      */
     calcPos() {
         /**
-         * -- 计算所有souces的位置
+         * -- 计算所有sources的位置
          * offsetX 节点之间偏移
          * offsetY 上下层级之间偏移
          * start 最开始source tree绘制的位置
