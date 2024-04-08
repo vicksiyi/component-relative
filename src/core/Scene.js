@@ -119,20 +119,22 @@ export class Scene {
          * start 最开始source tree绘制的位置
          * gap 每个source tree之间的偏移
          */
-        const start = { x: 0, y: 0 }, gap = 100;
-        let maxHeight = 0;
+        const gap = 100;
+        let start = 0, width = 0, height = 0;
         /**
          * 计算所有souces的位置
          */
         sources.forEach((id) => {
-            const bound = visit(id, start.x, 0);
-            start.x += bound.width + gap;
-            maxHeight = Math.max(bound.height, maxHeight);
+            const bound = visit(id, start, 0);
+            start += bound.width + gap;
+            width += bound.width + gap;
+            height = Math.max(bound.height, height);
         });
+        if (sources.length) width -= gap;
         /**
          * 计算所有root位置
          */
-        visit(this.tree.root, start.x / 2, maxHeight);
+        visit(this.tree.root, width / 2, height);
     }
     on(eventName, handler) {
         this.eventEmitter.on(eventName, handler);
