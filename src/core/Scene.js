@@ -6,6 +6,7 @@ import { type2Size } from "./node/Attr.js";
 export class Scene {
     eventEmitter = new EventEmitter();
     animatedTreeNodes = new Map;
+    sourceOuterPos = null;
     constructor(editor) {
         this.editor = editor;
     }
@@ -74,6 +75,24 @@ export class Scene {
         ctx.lineWidth = 1;
         this.tree.sources.forEach(id => visit(id));
         /**
+         * 绘制source 外框
+         */
+        ctx.save();
+        const sourceOuterPos = this.sourceOuterPos;
+        const fontSize = 16;
+        ctx.globalAlpha = 0.5;
+        ctx.strokeStyle = textColor;
+        ctx.setLineDash([10]);
+        ctx.lineWidth = 2;
+        ctx.strokeRect(sourceOuterPos.x, sourceOuterPos.y, sourceOuterPos.w, sourceOuterPos.h);
+        //外框文字
+        ctx.fillStyle = textColor
+        ctx.textAlign = 'start'
+        ctx.textBaseline = 'middle'
+        ctx.font = `${fontSize}px sans-serif`;
+        ctx.fillText('Source区', sourceOuterPos.x, sourceOuterPos.y - fontSize);
+        ctx.restore();
+        /**
          * 绘制所有节点
          */
         for (let [_, detail] of this.animatedTreeNodes) {
@@ -108,7 +127,6 @@ export class Scene {
             }
             const size = type2Size(node.type);
             width = Math.max(width - offsetX, 0);
-            height = Math.max(height, height);
             x += width / 2;
             const info = { x, y, size, node };
             this.animatedTreeNodes.set(node.id, info);
@@ -120,21 +138,35 @@ export class Scene {
          * gap 每个source tree之间的偏移
          */
         const gap = 100;
-        let start = 0, width = 0, height = 0;
+        const start = { x: 0, y: 0 };
+        let offset = 0, width = 0, height = 0;
         /**
          * 计算所有souces的位置
          */
         sources.forEach((id) => {
-            const bound = visit(id, start, 0);
-            start += bound.width + gap;
-            width += bound.width + gap;
-            height = Math.max(bound.height, height);
+            const bound = visit(id, start.x + offset, 0);
+            offset += bound.width + gap;
+            height = Math.max(bound.height - offsetY, height);
         });
-        if (sources.length) width -= gap;
+        if (sources.length) width = offset - gap;
+
+        /**
+         * padding 外框距离内元素padding
+         */
+        const padding = { x: 100, y: 50 };
+        this.sourceOuterPos = {
+            x: start.x - padding.x,
+            y: start.y - padding.y,
+            w: width + padding.x * 2,
+            h: height + padding.y * 2
+        };
+
         /**
          * 计算所有root位置
-         */
-        visit(this.tree.root, width / 2, height);
+         * gapSource 和source之间的间距
+        */
+        const gapSource = 100;
+        visit(this.tree.root, width / 2, height + padding.y + gapSource);
     }
     on(eventName, handler) {
         this.eventEmitter.on(eventName, handler);
