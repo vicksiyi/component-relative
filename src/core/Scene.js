@@ -6,7 +6,17 @@ import { type2Size } from "./node/Attr.js";
 export class Scene {
     eventEmitter = new EventEmitter();
     animatedTreeNodes = new Map;
-    sourceOuterBound = null;
+    sourceOuterBound = null; // source 外框 bound 注意：x，y表示左上角坐标
+    rootOuterBound = null; // root 外框 bound 注意：x，y表示左上角坐标
+    get sceneBound() {
+        const bound = {
+            x: this.sourceOuterBound.x,
+            y: this.sourceOuterBound.y,
+            w: Math.max(this.sourceOuterBound.w, this.rootOuterBound.w),
+            h: this.sourceOuterBound.h + this.rootOuterBound.h + 100
+        }
+        return bound;
+    }
     constructor(editor) {
         this.editor = editor;
     }
@@ -110,6 +120,7 @@ export class Scene {
         this.tree = new Tree({ data });
         this.calcPos();
         this.bindEvent();
+        this.editor.zoomManager.zoomToFit();
         this.render();
     }
     /**
@@ -167,7 +178,14 @@ export class Scene {
          * gapSource 和source之间的间距
         */
         const gapSource = 100;
-        visit(this.tree.root, width / 2, height + padding.y + gapSource);
+        const rootStart = { x: width / 2, y: this.sourceOuterBound.h + gapSource }
+        const rootSize = visit(this.tree.root, rootStart.x, rootStart.y);
+        this.rootOuterBound = {
+            x: rootStart.x,
+            y: rootStart.y,
+            w: rootSize.width,
+            h: rootSize.height
+        }
     }
     /**
      * 给节点绑定事件

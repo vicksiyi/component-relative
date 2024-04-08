@@ -73,6 +73,7 @@ export class HostEventManager {
                 width,
                 height,
             });
+            this.editor.zoomManager.zoomToFit();
             this.editor.render();
         });
     }

@@ -77,6 +77,39 @@ export class ZoomManager {
         this.adjustScroll(prevZoom, opts?.center);
     }
     /**
+     * zoom to fit all elements
+     */
+    zoomToFit() {
+        const bound = this.editor.scene.sceneBound;
+        const viewport = this.editor.viewportManager.getViewport();
+        const padding = 100; // 上下左右之间间距
+        // 计算内容边界框的宽度和高度
+        const contentWidth = bound.w;
+        const contentHeight = bound.h;
+
+        // 计算水平和垂直缩放比例
+        const scaleX = viewport.width / (contentWidth + padding * 2);
+        const scaleY = viewport.height / (contentHeight + padding * 2);
+
+        // 选择最小的缩放比例，以确保内容完全显示在视口中
+        const zoom = Math.min(scaleX, scaleY);
+
+        // 计算内容中心点坐标
+        const contentCenterX = bound.x + contentWidth / 2;
+        const contentCenterY = bound.y + contentHeight / 2;
+
+        // viewport 位置
+        const viewportX = contentCenterX - viewport.width / (2 * zoom);
+        const viewportY = contentCenterY - viewport.height / (2 * zoom);
+
+        this.setZoom(zoom);
+        this.editor.viewportManager.setViewport({
+            ...viewport,
+            x: viewportX,
+            y: viewportY
+        });
+    }
+    /**
      * adjust scroll value
      * if no set (cx, cy), scale by canvas center
      */
