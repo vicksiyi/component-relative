@@ -6,7 +6,7 @@ import { type2Size } from "./node/Attr.js";
 export class Scene {
     eventEmitter = new EventEmitter();
     animatedTreeNodes = new Map;
-    sourceOuterPos = null;
+    sourceOuterBound = null;
     constructor(editor) {
         this.editor = editor;
     }
@@ -78,19 +78,19 @@ export class Scene {
          * 绘制source 外框
          */
         ctx.save();
-        const sourceOuterPos = this.sourceOuterPos;
+        const sourceOuterBound = this.sourceOuterBound;
         const fontSize = 16;
         ctx.globalAlpha = 0.5;
         ctx.strokeStyle = textColor;
         ctx.setLineDash([10]);
         ctx.lineWidth = 2;
-        ctx.strokeRect(sourceOuterPos.x, sourceOuterPos.y, sourceOuterPos.w, sourceOuterPos.h);
+        ctx.strokeRect(sourceOuterBound.x, sourceOuterBound.y, sourceOuterBound.w, sourceOuterBound.h);
         //外框文字
         ctx.fillStyle = textColor
         ctx.textAlign = 'start'
         ctx.textBaseline = 'middle'
         ctx.font = `${fontSize}px sans-serif`;
-        ctx.fillText('Source区', sourceOuterPos.x, sourceOuterPos.y - fontSize);
+        ctx.fillText('Source区', sourceOuterBound.x, sourceOuterBound.y - fontSize);
         ctx.restore();
         /**
          * 绘制所有节点
@@ -113,8 +113,11 @@ export class Scene {
      */
     calcPos() {
         /**
+         * -- 计算所有souces的位置
          * offsetX 节点之间偏移
          * offsetY 上下层级之间偏移
+         * start 最开始source tree绘制的位置
+         * gap 每个source tree之间的偏移
          */
         const offsetY = 50, offsetX = 40;
         const visit = (id, x, y) => {
@@ -133,16 +136,9 @@ export class Scene {
             return { width, height };
         }
         const sources = this.tree.sources;
-        /**
-         * start 最开始source tree绘制的位置
-         * gap 每个source tree之间的偏移
-         */
         const gap = 100;
         const start = { x: 0, y: 0 };
         let offset = 0, width = 0, height = 0;
-        /**
-         * 计算所有souces的位置
-         */
         sources.forEach((id) => {
             const bound = visit(id, start.x + offset, 0);
             offset += bound.width + gap;
@@ -151,10 +147,11 @@ export class Scene {
         if (sources.length) width = offset - gap;
 
         /**
-         * padding 外框距离内元素padding
+         * 计算source 外框的位置
+         * -- padding 外框距离内元素padding
          */
         const padding = { x: 100, y: 50 };
-        this.sourceOuterPos = {
+        this.sourceOuterBound = {
             x: start.x - padding.x,
             y: start.y - padding.y,
             w: width + padding.x * 2,
@@ -162,7 +159,7 @@ export class Scene {
         };
 
         /**
-         * 计算所有root位置
+         * -- 计算所有root位置
          * gapSource 和source之间的间距
         */
         const gapSource = 100;
