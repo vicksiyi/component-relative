@@ -45,6 +45,8 @@ export class Scene {
         this.draw();
         ctx.restore();
 
+        /** drawing relativeLines */
+        this.editor.relativeLine.draw();
         /** drawing rulers */
         if (setting.get('enableRuler')) {
             this.editor.ruler.draw();
@@ -74,6 +76,7 @@ export class Scene {
         ctx.strokeStyle = textColor;
         ctx.lineWidth = 1;
         this.tree.sources.forEach(id => visit(id));
+        visit(this.tree.root);
         /**
          * 绘制source 外框
          */

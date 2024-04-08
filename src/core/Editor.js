@@ -4,6 +4,7 @@ import { Setting } from "./Setting.js";
 import { Scene } from "./Scene.js";
 import { HostEventManager } from "./HostEventManager.js";
 import { Ruler } from "./Ruler.js";
+import { RelativeLine } from "./RelativeLine.js";
 import { viewportCoordsToSceneUtil } from "../common/utils.js";
 
 export class Editor {
@@ -24,6 +25,7 @@ export class Editor {
         this.zoomManager = new ZoomManager(this);
 
         this.hostEventManager = new HostEventManager(this);
+        this.relativeLine = new RelativeLine(this);
         this.ruler = new Ruler(this);
         this.hostEventManager.bindHotkeys();
 
