@@ -1,0 +1,1504 @@
+{
+    "nodes": {
+        "2:108": {
+            "id": "2:108",
+            "name": "注册登录-完善身份资料-未填写 7",
+            "type": "symbolMaster",
+            "fromId": "30:2",
+            "children": [
+                "2:109",
+                "2:110",
+                "2:139",
+                "2:142",
+                "2:268",
+                "2:289",
+                "2:292",
+                "2:323"
+            ]
+        },
+        "2:109": {
+            "id": "2:109",
+            "name": "背景",
+            "type": "vector",
+            "fromId": "30:3",
+            "children": []
+        },
+        "2:110": {
+            "id": "2:110",
+            "name": "内框",
+            "type": "vector",
+            "fromId": "30:4",
+            "children": []
+        },
+        "2:139": {
+            "id": "2:139",
+            "name": "确定键",
+            "type": "group",
+            "fromId": "30:5",
+            "children": [
+                "2:140",
+                "2:141"
+            ]
+        },
+        "2:140": {
+            "id": "2:140",
+            "name": "矩形 7",
+            "type": "vector",
+            "fromId": "30:6",
+            "children": []
+        },
+        "2:141": {
+            "id": "2:141",
+            "name": "文本 1",
+            "type": "text",
+            "fromId": "30:7",
+            "children": []
+        },
+        "2:142": {
+            "id": "2:142",
+            "name": "分组 1",
+            "type": "group",
+            "fromId": "30:8",
+            "children": [
+                "2:143",
+                "2:244",
+                "2:253",
+                "2:258",
+                "2:263"
+            ]
+        },
+        "2:143": {
+            "id": "2:143",
+            "name": "5",
+            "type": "group",
+            "fromId": "30:9",
+            "children": [
+                "2:144",
+                "2:241",
+                "2:242",
+                "2:243"
+            ]
+        },
+        "2:144": {
+            "id": "2:144",
+            "name": "菜单bg",
+            "type": "vector",
+            "fromId": "30:10",
+            "children": []
+        },
+        "2:241": {
+            "id": "2:241",
+            "name": "矩形 2",
+            "type": "vector",
+            "fromId": "30:11",
+            "children": []
+        },
+        "2:242": {
+            "id": "2:242",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:12",
+            "children": []
+        },
+        "2:243": {
+            "id": "2:243",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:13",
+            "children": []
+        },
+        "2:244": {
+            "id": "2:244",
+            "name": "4",
+            "type": "group",
+            "fromId": "30:14",
+            "children": [
+                "2:245",
+                "2:246",
+                "2:247",
+                "2:252"
+            ]
+        },
+        "2:245": {
+            "id": "2:245",
+            "name": "菜单bg",
+            "type": "vector",
+            "fromId": "30:15",
+            "children": []
+        },
+        "2:246": {
+            "id": "2:246",
+            "name": "矩形 2",
+            "type": "vector",
+            "fromId": "30:16",
+            "children": []
+        },
+        "2:247": {
+            "id": "2:247",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:17",
+            "children": []
+        },
+        "2:252": {
+            "id": "2:252",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:18",
+            "children": []
+        },
+        "2:253": {
+            "id": "2:253",
+            "name": "3",
+            "type": "group",
+            "fromId": "30:19",
+            "children": [
+                "2:254",
+                "2:255",
+                "2:256",
+                "2:257"
+            ]
+        },
+        "2:254": {
+            "id": "2:254",
+            "name": "菜单bg",
+            "type": "vector",
+            "fromId": "30:20",
+            "children": []
+        },
+        "2:255": {
+            "id": "2:255",
+            "name": "矩形 2",
+            "type": "vector",
+            "fromId": "30:21",
+            "children": []
+        },
+        "2:256": {
+            "id": "2:256",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:22",
+            "children": []
+        },
+        "2:257": {
+            "id": "2:257",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:23",
+            "children": []
+        },
+        "2:258": {
+            "id": "2:258",
+            "name": "2",
+            "type": "group",
+            "fromId": "30:24",
+            "children": [
+                "2:259",
+                "2:260",
+                "2:261",
+                "2:262"
+            ]
+        },
+        "2:259": {
+            "id": "2:259",
+            "name": "菜单bg",
+            "type": "vector",
+            "fromId": "30:25",
+            "children": []
+        },
+        "2:260": {
+            "id": "2:260",
+            "name": "矩形 2",
+            "type": "vector",
+            "fromId": "30:26",
+            "children": []
+        },
+        "2:261": {
+            "id": "2:261",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:27",
+            "children": []
+        },
+        "2:262": {
+            "id": "2:262",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:28",
+            "children": []
+        },
+        "2:263": {
+            "id": "2:263",
+            "name": "1",
+            "type": "group",
+            "fromId": "30:29",
+            "children": [
+                "2:264",
+                "2:265",
+                "2:266",
+                "2:267"
+            ]
+        },
+        "2:264": {
+            "id": "2:264",
+            "name": "菜单bg",
+            "type": "vector",
+            "fromId": "30:30",
+            "children": []
+        },
+        "2:265": {
+            "id": "2:265",
+            "name": "矩形 2",
+            "type": "vector",
+            "fromId": "30:31",
+            "children": []
+        },
+        "2:266": {
+            "id": "2:266",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:32",
+            "children": []
+        },
+        "2:267": {
+            "id": "2:267",
+            "name": "文本 3",
+            "type": "text",
+            "fromId": "30:33",
+            "children": []
+        },
+        "2:268": {
+            "id": "2:268",
+            "name": "身份证上传",
+            "type": "group",
+            "fromId": "30:34",
+            "children": [
+                "2:269",
+                "2:279"
+            ]
+        },
+        "2:269": {
+            "id": "2:269",
+            "name": "身份证背面",
+            "type": "symbolInstance",
+            "fromId": "2:98",
+            "children": [
+                "2:270",
+                "2:271",
+                "2:272"
+            ]
+        },
+        "2:270": {
+            "id": "2:270",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "2:99",
+            "children": []
+        },
+        "2:271": {
+            "id": "2:271",
+            "name": "文本 1",
+            "type": "text",
+            "fromId": "2:100",
+            "children": []
+        },
+        "2:272": {
+            "id": "2:272",
+            "name": "添加icon",
+            "type": "group",
+            "fromId": "2:101",
+            "children": [
+                "2:273",
+                "2:274"
+            ]
+        },
+        "2:273": {
+            "id": "2:273",
+            "name": "圆形 1",
+            "type": "vector",
+            "fromId": "2:102",
+            "children": []
+        },
+        "2:274": {
+            "id": "2:274",
+            "name": "加号",
+            "type": "group",
+            "fromId": "2:103",
+            "children": [
+                "2:275",
+                "2:278"
+            ]
+        },
+        "2:275": {
+            "id": "2:275",
+            "name": "并集",
+            "type": "vectorGroup",
+            "fromId": "2:104",
+            "children": [
+                "2:276",
+                "2:277"
+            ]
+        },
+        "2:276": {
+            "id": "2:276",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "2:105",
+            "children": []
+        },
+        "2:277": {
+            "id": "2:277",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "2:106",
+            "children": []
+        },
+        "2:278": {
+            "id": "2:278",
+            "name": "矩形 3",
+            "type": "vector",
+            "fromId": "2:107",
+            "children": []
+        },
+        "2:279": {
+            "id": "2:279",
+            "name": "身份证正面",
+            "type": "symbolInstance",
+            "fromId": "2:88",
+            "children": [
+                "2:280",
+                "2:281",
+                "2:282"
+            ]
+        },
+        "2:280": {
+            "id": "2:280",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "2:89",
+            "children": []
+        },
+        "2:281": {
+            "id": "2:281",
+            "name": "文本 1",
+            "type": "text",
+            "fromId": "2:90",
+            "children": []
+        },
+        "2:282": {
+            "id": "2:282",
+            "name": "添加icon",
+            "type": "group",
+            "fromId": "2:91",
+            "children": [
+                "2:283",
+                "2:284"
+            ]
+        },
+        "2:283": {
+            "id": "2:283",
+            "name": "圆形 1",
+            "type": "vector",
+            "fromId": "2:92",
+            "children": []
+        },
+        "2:284": {
+            "id": "2:284",
+            "name": "加号",
+            "type": "group",
+            "fromId": "2:93",
+            "children": [
+                "2:285",
+                "2:288"
+            ]
+        },
+        "2:285": {
+            "id": "2:285",
+            "name": "并集",
+            "type": "vectorGroup",
+            "fromId": "2:94",
+            "children": [
+                "2:286",
+                "2:287"
+            ]
+        },
+        "2:286": {
+            "id": "2:286",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "2:95",
+            "children": []
+        },
+        "2:287": {
+            "id": "2:287",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "2:96",
+            "children": []
+        },
+        "2:288": {
+            "id": "2:288",
+            "name": "矩形 3",
+            "type": "vector",
+            "fromId": "2:97",
+            "children": []
+        },
+        "2:289": {
+            "id": "2:289",
+            "name": "标签栏",
+            "type": "group",
+            "fromId": "30:55",
+            "children": [
+                "2:290",
+                "2:291"
+            ]
+        },
+        "2:290": {
+            "id": "2:290",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:56",
+            "children": []
+        },
+        "2:291": {
+            "id": "2:291",
+            "name": "矩形 2",
+            "type": "vector",
+            "fromId": "30:57",
+            "children": []
+        },
+        "2:292": {
+            "id": "2:292",
+            "name": "标题栏",
+            "type": "group",
+            "fromId": "30:58",
+            "children": [
+                "2:293",
+                "2:294",
+                "2:300",
+                "2:307",
+                "2:319",
+                "2:320"
+            ]
+        },
+        "2:293": {
+            "id": "2:293",
+            "name": "底栏",
+            "type": "vector",
+            "fromId": "30:59",
+            "children": []
+        },
+        "2:294": {
+            "id": "2:294",
+            "name": "扫一扫icon",
+            "type": "vectorGroup",
+            "fromId": "30:60",
+            "children": [
+                "2:295",
+                "2:296",
+                "2:297",
+                "2:298",
+                "2:299"
+            ]
+        },
+        "2:295": {
+            "id": "2:295",
+            "name": "路径 1",
+            "type": "vector",
+            "fromId": "30:61",
+            "children": []
+        },
+        "2:296": {
+            "id": "2:296",
+            "name": "路径 2",
+            "type": "vector",
+            "fromId": "30:62",
+            "children": []
+        },
+        "2:297": {
+            "id": "2:297",
+            "name": "路径 3",
+            "type": "vector",
+            "fromId": "30:63",
+            "children": []
+        },
+        "2:298": {
+            "id": "2:298",
+            "name": "路径 4",
+            "type": "vector",
+            "fromId": "30:64",
+            "children": []
+        },
+        "2:299": {
+            "id": "2:299",
+            "name": "路径 5",
+            "type": "vector",
+            "fromId": "30:65",
+            "children": []
+        },
+        "2:300": {
+            "id": "2:300",
+            "name": "拜访记录键",
+            "type": "group",
+            "fromId": "30:66",
+            "children": [
+                "2:301",
+                "2:302"
+            ]
+        },
+        "2:301": {
+            "id": "2:301",
+            "name": "按键框",
+            "type": "vector",
+            "fromId": "30:67",
+            "children": []
+        },
+        "2:302": {
+            "id": "2:302",
+            "name": "文本 1",
+            "type": "text",
+            "fromId": "30:68",
+            "children": []
+        },
+        "2:307": {
+            "id": "2:307",
+            "name": "关闭键",
+            "type": "group",
+            "fromId": "30:69",
+            "children": [
+                "2:308",
+                "2:318"
+            ]
+        },
+        "2:308": {
+            "id": "2:308",
+            "name": "并集",
+            "type": "vectorGroup",
+            "fromId": "30:70",
+            "children": [
+                "2:309",
+                "2:310"
+            ]
+        },
+        "2:309": {
+            "id": "2:309",
+            "name": "路径 1",
+            "type": "vector",
+            "fromId": "30:71",
+            "children": []
+        },
+        "2:310": {
+            "id": "2:310",
+            "name": "路径 2",
+            "type": "vector",
+            "fromId": "30:72",
+            "children": []
+        },
+        "2:318": {
+            "id": "2:318",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:73",
+            "children": []
+        },
+        "2:319": {
+            "id": "2:319",
+            "name": "文本 1",
+            "type": "text",
+            "fromId": "30:74",
+            "children": []
+        },
+        "2:320": {
+            "id": "2:320",
+            "name": "返回键",
+            "type": "group",
+            "fromId": "30:75",
+            "children": [
+                "2:321",
+                "2:322"
+            ]
+        },
+        "2:321": {
+            "id": "2:321",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:76",
+            "children": []
+        },
+        "2:322": {
+            "id": "2:322",
+            "name": "路径 1",
+            "type": "vector",
+            "fromId": "30:77",
+            "children": []
+        },
+        "2:323": {
+            "id": "2:323",
+            "name": "状态栏",
+            "type": "group",
+            "fromId": "30:78",
+            "children": [
+                "2:324",
+                "2:325",
+                "2:329",
+                "2:330",
+                "2:331"
+            ]
+        },
+        "2:324": {
+            "id": "2:324",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:79",
+            "children": []
+        },
+        "2:325": {
+            "id": "2:325",
+            "name": "电力",
+            "type": "group",
+            "fromId": "30:80",
+            "children": [
+                "2:326",
+                "2:327",
+                "2:328"
+            ]
+        },
+        "2:326": {
+            "id": "2:326",
+            "name": "路径_4",
+            "type": "vector",
+            "fromId": "30:81",
+            "children": []
+        },
+        "2:327": {
+            "id": "2:327",
+            "name": "路径_5",
+            "type": "vector",
+            "fromId": "30:82",
+            "children": []
+        },
+        "2:328": {
+            "id": "2:328",
+            "name": "路径_6",
+            "type": "vector",
+            "fromId": "30:83",
+            "children": []
+        },
+        "2:329": {
+            "id": "2:329",
+            "name": "路径_7",
+            "type": "vector",
+            "fromId": "30:84",
+            "children": []
+        },
+        "2:330": {
+            "id": "2:330",
+            "name": "路径_8",
+            "type": "vector",
+            "fromId": "30:85",
+            "children": []
+        },
+        "2:331": {
+            "id": "2:331",
+            "name": "文本 1",
+            "type": "text",
+            "fromId": "30:86",
+            "children": []
+        },
+        "30:2": {
+            "id": "30:2",
+            "name": "注册登录-完善身份资料-未填写 7",
+            "type": "symbolMaster",
+            "fromId": "30:2",
+            "children": [
+                "30:3",
+                "30:4",
+                "30:5",
+                "30:8",
+                "30:34",
+                "30:55",
+                "30:58",
+                "30:78"
+            ]
+        },
+        "30:3": {
+            "id": "30:3",
+            "name": "背景",
+            "type": "vector",
+            "children": []
+        },
+        "30:4": {
+            "id": "30:4",
+            "name": "内框",
+            "type": "vector",
+            "children": []
+        },
+        "30:5": {
+            "id": "30:5",
+            "name": "确定键",
+            "type": "group",
+            "children": [
+                "30:6",
+                "30:7"
+            ]
+        },
+        "30:6": {
+            "id": "30:6",
+            "name": "矩形 7",
+            "type": "vector",
+            "children": []
+        },
+        "30:7": {
+            "id": "30:7",
+            "name": "文本 1",
+            "type": "text",
+            "children": []
+        },
+        "30:8": {
+            "id": "30:8",
+            "name": "分组 1",
+            "type": "group",
+            "children": [
+                "30:9",
+                "30:14",
+                "30:19",
+                "30:24",
+                "30:29"
+            ]
+        },
+        "30:9": {
+            "id": "30:9",
+            "name": "5",
+            "type": "group",
+            "children": [
+                "30:10",
+                "30:11",
+                "30:12",
+                "30:13"
+            ]
+        },
+        "30:10": {
+            "id": "30:10",
+            "name": "菜单bg",
+            "type": "vector",
+            "children": []
+        },
+        "30:11": {
+            "id": "30:11",
+            "name": "矩形 2",
+            "type": "vector",
+            "children": []
+        },
+        "30:12": {
+            "id": "30:12",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:13": {
+            "id": "30:13",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:14": {
+            "id": "30:14",
+            "name": "4",
+            "type": "group",
+            "children": [
+                "30:15",
+                "30:16",
+                "30:17",
+                "30:18"
+            ]
+        },
+        "30:15": {
+            "id": "30:15",
+            "name": "菜单bg",
+            "type": "vector",
+            "children": []
+        },
+        "30:16": {
+            "id": "30:16",
+            "name": "矩形 2",
+            "type": "vector",
+            "children": []
+        },
+        "30:17": {
+            "id": "30:17",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:18": {
+            "id": "30:18",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:19": {
+            "id": "30:19",
+            "name": "3",
+            "type": "group",
+            "children": [
+                "30:20",
+                "30:21",
+                "30:22",
+                "30:23"
+            ]
+        },
+        "30:20": {
+            "id": "30:20",
+            "name": "菜单bg",
+            "type": "vector",
+            "children": []
+        },
+        "30:21": {
+            "id": "30:21",
+            "name": "矩形 2",
+            "type": "vector",
+            "children": []
+        },
+        "30:22": {
+            "id": "30:22",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:23": {
+            "id": "30:23",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:24": {
+            "id": "30:24",
+            "name": "2",
+            "type": "group",
+            "children": [
+                "30:25",
+                "30:26",
+                "30:27",
+                "30:28"
+            ]
+        },
+        "30:25": {
+            "id": "30:25",
+            "name": "菜单bg",
+            "type": "vector",
+            "children": []
+        },
+        "30:26": {
+            "id": "30:26",
+            "name": "矩形 2",
+            "type": "vector",
+            "children": []
+        },
+        "30:27": {
+            "id": "30:27",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:28": {
+            "id": "30:28",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:29": {
+            "id": "30:29",
+            "name": "1",
+            "type": "group",
+            "children": [
+                "30:30",
+                "30:31",
+                "30:32",
+                "30:33"
+            ]
+        },
+        "30:30": {
+            "id": "30:30",
+            "name": "菜单bg",
+            "type": "vector",
+            "children": []
+        },
+        "30:31": {
+            "id": "30:31",
+            "name": "矩形 2",
+            "type": "vector",
+            "children": []
+        },
+        "30:32": {
+            "id": "30:32",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:33": {
+            "id": "30:33",
+            "name": "文本 3",
+            "type": "text",
+            "children": []
+        },
+        "30:34": {
+            "id": "30:34",
+            "name": "身份证上传",
+            "type": "group",
+            "children": [
+                "2:98",
+                "2:88"
+            ]
+        },
+        "2:98": {
+            "id": "2:98",
+            "name": "身份证背面",
+            "type": "symbolMaster",
+            "fromId": "30:35",
+            "children": [
+                "2:99",
+                "2:100",
+                "2:101"
+            ]
+        },
+        "2:99": {
+            "id": "2:99",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:36",
+            "children": []
+        },
+        "2:100": {
+            "id": "2:100",
+            "name": "文本 1",
+            "type": "text",
+            "fromId": "30:37",
+            "children": []
+        },
+        "2:101": {
+            "id": "2:101",
+            "name": "添加icon",
+            "type": "group",
+            "fromId": "30:38",
+            "children": [
+                "2:102",
+                "2:103"
+            ]
+        },
+        "2:102": {
+            "id": "2:102",
+            "name": "圆形 1",
+            "type": "vector",
+            "fromId": "30:39",
+            "children": []
+        },
+        "2:103": {
+            "id": "2:103",
+            "name": "加号",
+            "type": "group",
+            "fromId": "30:40",
+            "children": [
+                "2:104",
+                "2:107"
+            ]
+        },
+        "2:104": {
+            "id": "2:104",
+            "name": "并集",
+            "type": "vectorGroup",
+            "fromId": "30:41",
+            "children": [
+                "2:105",
+                "2:106"
+            ]
+        },
+        "2:105": {
+            "id": "2:105",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:42",
+            "children": []
+        },
+        "2:106": {
+            "id": "2:106",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:43",
+            "children": []
+        },
+        "2:107": {
+            "id": "2:107",
+            "name": "矩形 3",
+            "type": "vector",
+            "fromId": "30:44",
+            "children": []
+        },
+        "2:88": {
+            "id": "2:88",
+            "name": "身份证正面",
+            "type": "symbolMaster",
+            "fromId": "30:45",
+            "children": [
+                "2:89",
+                "2:90",
+                "2:91"
+            ]
+        },
+        "2:89": {
+            "id": "2:89",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:46",
+            "children": []
+        },
+        "2:90": {
+            "id": "2:90",
+            "name": "文本 1",
+            "type": "text",
+            "fromId": "30:47",
+            "children": []
+        },
+        "2:91": {
+            "id": "2:91",
+            "name": "添加icon",
+            "type": "group",
+            "fromId": "30:48",
+            "children": [
+                "2:92",
+                "2:93"
+            ]
+        },
+        "2:92": {
+            "id": "2:92",
+            "name": "圆形 1",
+            "type": "vector",
+            "fromId": "30:49",
+            "children": []
+        },
+        "2:93": {
+            "id": "2:93",
+            "name": "加号",
+            "type": "group",
+            "fromId": "30:50",
+            "children": [
+                "2:94",
+                "2:97"
+            ]
+        },
+        "2:94": {
+            "id": "2:94",
+            "name": "并集",
+            "type": "vectorGroup",
+            "fromId": "30:51",
+            "children": [
+                "2:95",
+                "2:96"
+            ]
+        },
+        "2:95": {
+            "id": "2:95",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:52",
+            "children": []
+        },
+        "2:96": {
+            "id": "2:96",
+            "name": "矩形 1",
+            "type": "vector",
+            "fromId": "30:53",
+            "children": []
+        },
+        "2:97": {
+            "id": "2:97",
+            "name": "矩形 3",
+            "type": "vector",
+            "fromId": "30:54",
+            "children": []
+        },
+        "30:55": {
+            "id": "30:55",
+            "name": "标签栏",
+            "type": "group",
+            "children": [
+                "30:56",
+                "30:57"
+            ]
+        },
+        "30:56": {
+            "id": "30:56",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:57": {
+            "id": "30:57",
+            "name": "矩形 2",
+            "type": "vector",
+            "children": []
+        },
+        "30:58": {
+            "id": "30:58",
+            "name": "标题栏",
+            "type": "group",
+            "children": [
+                "30:59",
+                "30:60",
+                "30:66",
+                "30:69",
+                "30:74",
+                "30:75"
+            ]
+        },
+        "30:59": {
+            "id": "30:59",
+            "name": "底栏",
+            "type": "vector",
+            "children": []
+        },
+        "30:60": {
+            "id": "30:60",
+            "name": "扫一扫icon",
+            "type": "vectorGroup",
+            "children": [
+                "30:61",
+                "30:62",
+                "30:63",
+                "30:64",
+                "30:65"
+            ]
+        },
+        "30:61": {
+            "id": "30:61",
+            "name": "路径 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:62": {
+            "id": "30:62",
+            "name": "路径 2",
+            "type": "vector",
+            "children": []
+        },
+        "30:63": {
+            "id": "30:63",
+            "name": "路径 3",
+            "type": "vector",
+            "children": []
+        },
+        "30:64": {
+            "id": "30:64",
+            "name": "路径 4",
+            "type": "vector",
+            "children": []
+        },
+        "30:65": {
+            "id": "30:65",
+            "name": "路径 5",
+            "type": "vector",
+            "children": []
+        },
+        "30:66": {
+            "id": "30:66",
+            "name": "拜访记录键",
+            "type": "group",
+            "children": [
+                "30:67",
+                "30:68"
+            ]
+        },
+        "30:67": {
+            "id": "30:67",
+            "name": "按键框",
+            "type": "vector",
+            "children": []
+        },
+        "30:68": {
+            "id": "30:68",
+            "name": "文本 1",
+            "type": "text",
+            "children": []
+        },
+        "30:69": {
+            "id": "30:69",
+            "name": "关闭键",
+            "type": "group",
+            "children": [
+                "30:70",
+                "30:73"
+            ]
+        },
+        "30:70": {
+            "id": "30:70",
+            "name": "并集",
+            "type": "vectorGroup",
+            "children": [
+                "30:71",
+                "30:72"
+            ]
+        },
+        "30:71": {
+            "id": "30:71",
+            "name": "路径 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:72": {
+            "id": "30:72",
+            "name": "路径 2",
+            "type": "vector",
+            "children": []
+        },
+        "30:73": {
+            "id": "30:73",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:74": {
+            "id": "30:74",
+            "name": "文本 1",
+            "type": "text",
+            "children": []
+        },
+        "30:75": {
+            "id": "30:75",
+            "name": "返回键",
+            "type": "group",
+            "children": [
+                "30:76",
+                "30:77"
+            ]
+        },
+        "30:76": {
+            "id": "30:76",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:77": {
+            "id": "30:77",
+            "name": "路径 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:78": {
+            "id": "30:78",
+            "name": "状态栏",
+            "type": "group",
+            "children": [
+                "30:79",
+                "30:80",
+                "30:84",
+                "30:85",
+                "30:86"
+            ]
+        },
+        "30:79": {
+            "id": "30:79",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:80": {
+            "id": "30:80",
+            "name": "电力",
+            "type": "group",
+            "children": [
+                "30:81",
+                "30:82",
+                "30:83"
+            ]
+        },
+        "30:81": {
+            "id": "30:81",
+            "name": "路径_4",
+            "type": "vector",
+            "children": []
+        },
+        "30:82": {
+            "id": "30:82",
+            "name": "路径_5",
+            "type": "vector",
+            "children": []
+        },
+        "30:83": {
+            "id": "30:83",
+            "name": "路径_6",
+            "type": "vector",
+            "children": []
+        },
+        "30:84": {
+            "id": "30:84",
+            "name": "路径_7",
+            "type": "vector",
+            "children": []
+        },
+        "30:85": {
+            "id": "30:85",
+            "name": "路径_8",
+            "type": "vector",
+            "children": []
+        },
+        "30:86": {
+            "id": "30:86",
+            "name": "文本 1",
+            "type": "text",
+            "children": []
+        },
+        "30:35": {
+            "id": "30:35",
+            "name": "身份证背面",
+            "type": "symbolMaster",
+            "fromId": "30:35",
+            "children": [
+                "30:36",
+                "30:37",
+                "30:38"
+            ]
+        },
+        "30:36": {
+            "id": "30:36",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:37": {
+            "id": "30:37",
+            "name": "文本 1",
+            "type": "text",
+            "children": []
+        },
+        "30:38": {
+            "id": "30:38",
+            "name": "添加icon",
+            "type": "group",
+            "children": [
+                "30:39",
+                "30:40"
+            ]
+        },
+        "30:39": {
+            "id": "30:39",
+            "name": "圆形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:40": {
+            "id": "30:40",
+            "name": "加号",
+            "type": "group",
+            "children": [
+                "30:41",
+                "30:44"
+            ]
+        },
+        "30:41": {
+            "id": "30:41",
+            "name": "并集",
+            "type": "vectorGroup",
+            "children": [
+                "30:42",
+                "30:43"
+            ]
+        },
+        "30:42": {
+            "id": "30:42",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:43": {
+            "id": "30:43",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:44": {
+            "id": "30:44",
+            "name": "矩形 3",
+            "type": "vector",
+            "children": []
+        },
+        "30:45": {
+            "id": "30:45",
+            "name": "身份证正面",
+            "type": "symbolMaster",
+            "fromId": "30:45",
+            "children": [
+                "30:46",
+                "30:47",
+                "30:48"
+            ]
+        },
+        "30:46": {
+            "id": "30:46",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:47": {
+            "id": "30:47",
+            "name": "文本 1",
+            "type": "text",
+            "children": []
+        },
+        "30:48": {
+            "id": "30:48",
+            "name": "添加icon",
+            "type": "group",
+            "children": [
+                "30:49",
+                "30:50"
+            ]
+        },
+        "30:49": {
+            "id": "30:49",
+            "name": "圆形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:50": {
+            "id": "30:50",
+            "name": "加号",
+            "type": "group",
+            "children": [
+                "30:51",
+                "30:54"
+            ]
+        },
+        "30:51": {
+            "id": "30:51",
+            "name": "并集",
+            "type": "vectorGroup",
+            "children": [
+                "30:52",
+                "30:53"
+            ]
+        },
+        "30:52": {
+            "id": "30:52",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:53": {
+            "id": "30:53",
+            "name": "矩形 1",
+            "type": "vector",
+            "children": []
+        },
+        "30:54": {
+            "id": "30:54",
+            "name": "矩形 3",
+            "type": "vector",
+            "children": []
+        }
+    },
+    "root": "2:108",
+    "sources": [
+        "30:2",
+        "30:35",
+        "30:45"
+    ]
+}

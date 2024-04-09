@@ -114,8 +114,19 @@ export class Scene {
             ctx.beginPath();
             ctx.arc(detail.x, detail.y, size, 0, 2 * Math.PI, false);
             ctx.fill();
+            ctx.fillStyle = textColor
+            ctx.textAlign = 'center'
+            ctx.textBaseline = 'middle'
+            ctx.font = `${8}px sans-serif`;
+            ctx.fillText(detail.node.id, detail.x, detail.y);
         }
     }
+    /**
+     * data:
+     *  nodes 所有的节点数据
+     *  sources 所有的sources id列表
+     *  root 当前节点
+     */
     load(data) {
         this.tree = new Tree({ data });
         this.calcPos();
@@ -141,7 +152,7 @@ export class Scene {
             for (const child of node.children) {
                 const bound = visit(child, x + width, y + offsetY);
                 width += bound.width + offsetX;
-                height += bound.height + offsetY;
+                height = Math.max(height, bound.height + offsetY);
             }
             const size = type2Size(node.type);
             width = Math.max(width - offsetX, 0);
@@ -157,7 +168,7 @@ export class Scene {
         sources.forEach((id) => {
             const bound = visit(id, start.x + offset, 0);
             offset += bound.width + gap;
-            height = Math.max(bound.height - offsetY, height);
+            height = Math.max(bound.height, height);
         });
         if (sources.length) width = offset - gap;
 
@@ -178,7 +189,7 @@ export class Scene {
          * gapSource 和source之间的间距
         */
         const gapSource = 100;
-        const rootStart = { x: width / 2, y: this.sourceOuterBound.h + gapSource }
+        const rootStart = { x: start.x, y: start.y + this.sourceOuterBound.h + gapSource }
         const rootSize = visit(this.tree.root, rootStart.x, rootStart.y);
         this.rootOuterBound = {
             x: rootStart.x,
@@ -244,7 +255,12 @@ export class Scene {
          */
         this.tree.sources.forEach(rootId => {
             visit(rootId, (id) => {
-                console.log('选择节点', id);
+                if (relativeLine.has(id)) {
+                    relativeLine.remove(id);
+                } else {
+                    relativeLine.active(id);
+                }
+                this.editor.render();
             });
         })
     }
