@@ -80,7 +80,7 @@ export class ZoomManager {
      * zoom to fit all elements
      */
     zoomToFit() {
-        const bound = this.editor.scene.sceneBound;
+        const bound = this.editor.scene.sceneRect;
         const viewport = this.editor.viewportManager.getViewport();
         const padding = 100; // 上下左右之间间距
         // 计算内容边界框的宽度和高度

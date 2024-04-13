@@ -84,10 +84,8 @@ export const isInBound = (bound, point) => {
 
 /**
  * get merged bound from bounds
- * note:
- * 1. initial point is in the upper left corner
  */
-export const getMergedRect = (...bounds) => {
+export const getMergedBound = (...bounds) => {
   if (bounds.length === 0) {
     throw new Error('the count of rect can not be 0');
   }
@@ -97,10 +95,12 @@ export const getMergedRect = (...bounds) => {
   const maxX = Math.max(...bounds.map((bound) => bound.x + bound.w / 2));
   const maxY = Math.max(...bounds.map((bound) => bound.y + bound.h / 2));
 
+  const w = maxX - minX;
+  const h = maxY - minY;
   return {
-    x: minX,
-    y: minY,
-    w: maxX - minX,
-    h: maxY - minY,
+    x: minX + w / 2,
+    y: minY + h / 2,
+    w,
+    h,
   };
 };

@@ -2,7 +2,7 @@ import { getDevicePixelRatio } from "../common/index.js";
 import { 
     rafThrottle, 
     arbitraryColorFromID, 
-    getMergedRect 
+    getMergedBound 
 } from "../common/utils.js";
 import { EventEmitter } from "../common/event.js";
 import { Tree } from "./node/Tree.js";
@@ -10,16 +10,16 @@ import { type2Size } from "./node/Attr.js";
 export class Scene {
     eventEmitter = new EventEmitter();
     animatedTreeNodes = new Map;
-    sourceOuterBound = null; // source 外框 bound 注意：x，y表示左上角坐标
-    rootOuterBound = null; // root 外框 bound 注意：x，y表示左上角坐标
-    get sceneBound() {
-        const bound = {
-            x: this.sourceOuterBound.x,
-            y: this.sourceOuterBound.y,
-            w: Math.max(this.sourceOuterBound.w, this.rootOuterBound.w),
-            h: this.sourceOuterBound.h + this.rootOuterBound.h + 100
+    sourceOuterRect = null; // source 外框 bound 注意：x，y表示左上角坐标
+    rootOuterRect = null; // root 外框 bound 注意：x，y表示左上角坐标
+    get sceneRect() {
+        const rect = {
+            x: this.sourceOuterRect.x,
+            y: this.sourceOuterRect.y,
+            w: Math.max(this.sourceOuterRect.w, this.rootOuterRect.w),
+            h: this.sourceOuterRect.h + this.rootOuterRect.h + 100
         }
-        return bound;
+        return rect;
     }
     constructor(editor) {
         this.editor = editor;
@@ -95,19 +95,19 @@ export class Scene {
          * 绘制source 外框
          */
         ctx.save();
-        const sourceOuterBound = this.sourceOuterBound;
+        const sourceOuterRect = this.sourceOuterRect;
         const fontSize = 16;
         ctx.globalAlpha = 0.5;
         ctx.strokeStyle = textColor;
         ctx.setLineDash([10]);
         ctx.lineWidth = 2;
-        ctx.strokeRect(sourceOuterBound.x, sourceOuterBound.y, sourceOuterBound.w, sourceOuterBound.h);
+        ctx.strokeRect(sourceOuterRect.x, sourceOuterRect.y, sourceOuterRect.w, sourceOuterRect.h);
         //外框文字
         ctx.fillStyle = textColor
         ctx.textAlign = 'start'
         ctx.textBaseline = 'middle'
         ctx.font = `${fontSize}px sans-serif`;
-        ctx.fillText('Source区', sourceOuterBound.x, sourceOuterBound.y - fontSize);
+        ctx.fillText('Source区', sourceOuterRect.x, sourceOuterRect.y - fontSize);
         ctx.restore();
         /**
          * 绘制所有节点
@@ -182,9 +182,9 @@ export class Scene {
          */
         const padding = { x: 100, y: 50 };
         const mrSourceBound = this.calcTreeBoundByRootIds(sources);
-        this.sourceOuterBound = {
-            x: mrSourceBound.x - padding.x,
-            y: mrSourceBound.y - padding.y,
+        this.sourceOuterRect = {
+            x: mrSourceBound.x - mrSourceBound.w / 2 - padding.x,
+            y: mrSourceBound.y - mrSourceBound.h / 2 - padding.y,
             w: mrSourceBound.w + padding.x * 2,
             h: mrSourceBound.h + padding.y * 2
         };
@@ -194,9 +194,9 @@ export class Scene {
          * gapSource 和source之间的间距
         */
         const gapSource = 100;
-        const rootStart = { x: start.x, y: start.y + this.sourceOuterBound.h + gapSource }
+        const rootStart = { x: start.x, y: start.y + this.sourceOuterRect.h + gapSource }
         const rootSize = visit(this.tree.root, rootStart.x, rootStart.y);
-        this.rootOuterBound = {
+        this.rootOuterRect = {
             x: rootStart.x,
             y: rootStart.y,
             w: rootSize.width,
@@ -216,7 +216,7 @@ export class Scene {
             node.children?.forEach(child => visit(child));
         }
         ids.forEach(id => visit(id));
-        const mrBound = getMergedRect(...nodes);
+        const mrBound = getMergedBound(...nodes);
         return mrBound;
     }
     /**
