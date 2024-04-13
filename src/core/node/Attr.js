@@ -5,7 +5,7 @@ const TYPE = {
     SYMBOL_MASTER : 'symbolMaster',
     SYMBOL_INSTANCE: 'symbolInstance',
 }
-const DEFAULT_SIZE = 12;
+const DEFAULT_SIZE = 24;
 
 /**
  * 对应的ICON [SVG字符串]

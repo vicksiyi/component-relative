@@ -81,3 +81,26 @@ export const isInBound = (bound, point) => {
   const [endX, endY] = [startX + bound.w, startY + bound.h];
   return point.x >= startX && point.x <= endX && point.y >= startY && point.y <= endY;
 }
+
+/**
+ * get merged bound from bounds
+ * note:
+ * 1. initial point is in the upper left corner
+ */
+export const getMergedRect = (...bounds) => {
+  if (bounds.length === 0) {
+    throw new Error('the count of rect can not be 0');
+  }
+
+  const minX = Math.min(...bounds.map((bound) => bound.x - bound.w / 2));
+  const minY = Math.min(...bounds.map((bound) => bound.y - bound.h / 2));
+  const maxX = Math.max(...bounds.map((bound) => bound.x + bound.w / 2));
+  const maxY = Math.max(...bounds.map((bound) => bound.y + bound.h / 2));
+
+  return {
+    x: minX,
+    y: minY,
+    w: maxX - minX,
+    h: maxY - minY,
+  };
+};

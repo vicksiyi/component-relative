@@ -1,5 +1,9 @@
 import { getDevicePixelRatio } from "../common/index.js";
-import { rafThrottle, arbitraryColorFromID } from "../common/utils.js";
+import { 
+    rafThrottle, 
+    arbitraryColorFromID, 
+    getMergedRect 
+} from "../common/utils.js";
 import { EventEmitter } from "../common/event.js";
 import { Tree } from "./node/Tree.js";
 import { type2Size } from "./node/Attr.js";
@@ -110,9 +114,9 @@ export class Scene {
          */
         for (let [_, detail] of this.animatedTreeNodes) {
             ctx.fillStyle = arbitraryColorFromID(detail.node.id);
-            const size = type2Size(detail.node.type);
+            const { w } = detail;
             ctx.beginPath();
-            ctx.arc(detail.x, detail.y, size, 0, 2 * Math.PI, false);
+            ctx.arc(detail.x, detail.y, w / 2, 0, 2 * Math.PI, false);
             ctx.fill();
             ctx.fillStyle = textColor
             ctx.textAlign = 'center'
@@ -146,6 +150,7 @@ export class Scene {
          * gap 每个source tree之间的偏移
          */
         const offsetY = 50, offsetX = 40;
+        const sourceNodes = [];
         const visit = (id, x, y) => {
             const node = this.tree.nodes.get(id);
             let width = 0, height = 0;
@@ -157,7 +162,8 @@ export class Scene {
             const size = type2Size(node.type);
             width = Math.max(width - offsetX, 0);
             x += width / 2;
-            const info = { x, y, size, node };
+            const info = { x, y, w: size, h: size, node };
+            sourceNodes.push(info);
             this.animatedTreeNodes.set(node.id, info);
             return { width, height };
         }
@@ -177,11 +183,12 @@ export class Scene {
          * -- padding 外框距离内元素padding
          */
         const padding = { x: 100, y: 50 };
+        const mrSourceBound = getMergedRect(...sourceNodes);
         this.sourceOuterBound = {
-            x: start.x - padding.x,
-            y: start.y - padding.y,
-            w: width + padding.x * 2,
-            h: height + padding.y * 2
+            x: mrSourceBound.x - padding.x,
+            y: mrSourceBound.y - padding.y,
+            w: mrSourceBound.w + padding.x * 2,
+            h: mrSourceBound.h + padding.y * 2
         };
 
         /**
@@ -209,14 +216,13 @@ export class Scene {
          * 节点hover事件
          */
         for (let [_, detail] of animatedTreeNodes) {
-            const size = type2Size(detail.node.type);
             globalEventManager.add('move', {
                 cursor: 'pointer',
                 bound: {
                     x: detail.x,
                     y: detail.y,
-                    w: size,
-                    h: size
+                    w: detail.w,
+                    h: detail.h
                 }
             });
         }
@@ -225,13 +231,12 @@ export class Scene {
             const nNode = this.animatedTreeNodes.get(id);
             if (!nNode) return;
             const node = nNode.node;
-            const size = type2Size(node.type);
             globalEventManager.add('down', {
                 bound: {
                     x: nNode.x,
                     y: nNode.y,
-                    w: size,
-                    h: size
+                    w: nNode.w,
+                    h: nNode.h
                 },
                 action: (e) => cb(node.id)
             });
