@@ -150,7 +150,6 @@ export class Scene {
          * gap 每个source tree之间的偏移
          */
         const offsetY = 50, offsetX = 40;
-        const sourceNodes = [];
         const visit = (id, x, y) => {
             const node = this.tree.nodes.get(id);
             let width = 0, height = 0;
@@ -163,7 +162,6 @@ export class Scene {
             width = Math.max(width - offsetX, 0);
             x += width / 2;
             const info = { x, y, w: size, h: size, node };
-            sourceNodes.push(info);
             this.animatedTreeNodes.set(node.id, info);
             return { width, height };
         }
@@ -183,7 +181,7 @@ export class Scene {
          * -- padding 外框距离内元素padding
          */
         const padding = { x: 100, y: 50 };
-        const mrSourceBound = getMergedRect(...sourceNodes);
+        const mrSourceBound = this.calcTreeBoundByRootIds(sources);
         this.sourceOuterBound = {
             x: mrSourceBound.x - padding.x,
             y: mrSourceBound.y - padding.y,
@@ -204,6 +202,22 @@ export class Scene {
             w: rootSize.width,
             h: rootSize.height
         }
+    }
+    /**
+     * 计算某个树bound
+     */
+    calcTreeBoundByRootIds(ids) {
+        const nodes = [];
+        const visit = (id) => {
+            const nodeDetail = this.animatedTreeNodes.get(id);
+            if (!nodeDetail) return;
+            const node = nodeDetail.node;
+            nodes.push(nodeDetail);
+            node.children?.forEach(child => visit(child));
+        }
+        ids.forEach(id => visit(id));
+        const mrBound = getMergedRect(...nodes);
+        return mrBound;
     }
     /**
      * 给节点绑定事件
