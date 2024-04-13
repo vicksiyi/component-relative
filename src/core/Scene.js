@@ -113,16 +113,22 @@ export class Scene {
          * 绘制所有节点
          */
         for (let [_, detail] of this.animatedTreeNodes) {
-            ctx.fillStyle = arbitraryColorFromID(detail.node.id);
-            const { w } = detail;
+            const { x, y, w, node: { id, type } } = detail;
+            if (['symbolMaster', 'symbolInstance'].includes(type)) {
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(x, y, w / 2 + 2, 0, 2 * Math.PI, false);
+                ctx.fill();
+            }
+            ctx.fillStyle = arbitraryColorFromID(id);
             ctx.beginPath();
-            ctx.arc(detail.x, detail.y, w / 2, 0, 2 * Math.PI, false);
+            ctx.arc(x, y, w / 2, 0, 2 * Math.PI, false);
             ctx.fill();
             ctx.fillStyle = textColor
             ctx.textAlign = 'center'
             ctx.textBaseline = 'middle'
             ctx.font = `${8}px sans-serif`;
-            ctx.fillText(detail.node.id, detail.x, detail.y);
+            ctx.fillText(id, x, y);
         }
     }
     /**
