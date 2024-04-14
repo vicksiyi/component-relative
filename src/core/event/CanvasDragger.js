@@ -29,7 +29,7 @@ export class CanvasDragger {
     handlePointerMove(e) {
         const pos = this._getCursorInScene(e);
         this.editor.dragBox.setEnd(pos);
-        this.editor.render();
+        if (this.isDragging) this.editor.render();
     }
     handlePointerUp(e) {
         this.isDragging = false;
