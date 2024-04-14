@@ -22,6 +22,11 @@ export class Setting {
         rulerMarkSize: 4, // 刻度高度
         rulerMarkSizeWidth: 2, // 刻度宽度
         rulerFontSize: 12, // 刻度字体大小
+        /** dragBox */
+        dragBoxStrokeWidth: 1,
+        dragBoxStrokeStyle: "rgba(79, 129, 255, 1)",
+        dragBoxFillStyle: "rgba(79, 129, 255, 0.2)",
+
     };
     set(key, value) {
         this.value[key] = value;

@@ -37,16 +37,17 @@ export class DragBox {
     draw() {
         const {
             ctx,
-            canvasDragger
+            canvasDragger,
+            setting
         } = this.editor;
         if (!canvasDragger.isDragging) return;
-        const strokeWidth = 1
-        ctx.strokeStyle = "rgba(79, 129, 255, 1)";
+        const strokeWidth = setting.get('dragBoxStrokeWidth');
+        ctx.strokeStyle = setting.get('dragBoxStrokeStyle');
         ctx.lineWidth = strokeWidth;
         const { x, y, w, h } = this.rect;
         ctx.strokeRect(x - strokeWidth, y - strokeWidth, w + strokeWidth * 2, h + strokeWidth * 2);
         ctx.beginPath();
-        ctx.fillStyle = "rgba(79, 129, 255, 0.2)";
+        ctx.fillStyle = setting.get('dragBoxFillStyle');
         ctx.rect(x, y, w, h);
         ctx.fill();
     }
