@@ -27,7 +27,6 @@ export class ZoomManager {
     }
     /**
      * zoom in
-     * reference: https://mp.weixin.qq.com/s/UDnIxjYEsTop51gW7fwxMw
      * @param {*} opts ?: { center?: IPoint; enableLevel?: boolean }
      * @param center zoom center
      * @param enableLevel zoom by level
@@ -53,7 +52,6 @@ export class ZoomManager {
     }
     /**
      * zoom out
-     * reference: https://mp.weixin.qq.com/s/UDnIxjYEsTop51gW7fwxMw
      * @param {*} opts ?: { center?: IPoint; enableLevel?: boolean }
      * @param center zoom center
      * @param enableLevel zoom by level

@@ -56,8 +56,6 @@ export class Editor {
     }
     /**
      * viewport coords to scene coords
-     *
-     * reference: https://mp.weixin.qq.com/s/uvVXZKIMn1bjVZvUSyYZXA
      */
     viewportCoordsToScene(x, y, round = false) {
         const zoom = this.zoomManager.getZoom();

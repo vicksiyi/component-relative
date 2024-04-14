@@ -31,7 +31,7 @@ export class RelativeLine {
         for (let [id, val] of ids) {
             if (!val) continue;
             const startNode = animatedTreeNodes.get(id);
-            if(!startNode) continue;
+            if (!startNode) continue;
             const to = startNode.node.fromId;
             if (!to) continue;
             const endNode = animatedTreeNodes.get(to);
