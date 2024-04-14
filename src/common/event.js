@@ -7,6 +7,10 @@
 export class EventEmitter {
     eventMap = {};
 
+    clear() {
+        this.eventMap = {};
+    }
+    
     on(eventName, listener) {
         if (!this.eventMap[eventName]) {
             this.eventMap[eventName] = [];

@@ -5,7 +5,8 @@ import { Scene } from "./Scene.js";
 import { HostEventManager } from "./HostEventManager.js";
 import { Ruler } from "./Ruler.js";
 import { RelativeLine } from "./RelativeLine.js";
-import { GlobalEventManager } from "./GlobalEventManager.js";
+import { GlobalEventManager } from "./event/GlobalEventManager.js";
+import { NodeEventManager } from "./event/NodeEventManager.js";
 import { viewportCoordsToSceneUtil } from "../common/utils.js";
 
 export class Editor {
@@ -27,6 +28,7 @@ export class Editor {
 
         this.hostEventManager = new HostEventManager(this);
         this.globalEventManager = new GlobalEventManager(this);
+        this.nodeEventManager = new NodeEventManager(this);
         this.relativeLine = new RelativeLine(this);
         this.ruler = new Ruler(this);
         this.hostEventManager.bindHotkeys();

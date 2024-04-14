@@ -1,17 +1,14 @@
-import { isInBound } from "../common/utils.js";
-
-export class GlobalEventManager {
+import { isInBound } from "../../common/utils.js";
+/**
+ * 节点绑定事件
+ */
+export class NodeEventManager {
     moves = []; // mousemove 事件
     downs = []; // mousedown 事件
     isInit = false;
-
     constructor(editor) {
         this.editor = editor;
         this.initListener();
-    }
-    clear() {
-        this.moves = [];
-        this.downs = [];
     }
     /**
      * data:
@@ -33,12 +30,8 @@ export class GlobalEventManager {
         if (events) events.push(data);
     }
     initListener() {
-        /**
-         * 禁止重复监听
-         */
-        if (this.isInit) return;
-        this.isInit = true;
-        onmousemove = e => {
+        const editor = this.editor;
+        editor.globalEventManager.on('global-move', (e) => {
             const events = this.moves;
             const cursorXY = this.editor.getCursorXY(e);
             const { x, y } = this.editor.viewportCoordsToScene(cursorXY.x, cursorXY.y);
@@ -50,8 +43,8 @@ export class GlobalEventManager {
                 }
             }
             document.body.style.cursor = 'auto';
-        }
-        onmousedown = e => {
+        });
+        editor.globalEventManager.on('global-down', e => {
             const events = this.downs;
             const cursorXY = this.editor.getCursorXY(e);
             const { x, y } = this.editor.viewportCoordsToScene(cursorXY.x, cursorXY.y);
@@ -62,6 +55,6 @@ export class GlobalEventManager {
                     return;
                 }
             }
-        }
+        });
     }
 }

@@ -1,8 +1,8 @@
 import { getDevicePixelRatio } from "../common/index.js";
-import { 
-    rafThrottle, 
-    arbitraryColorFromID, 
-    getMergedBound 
+import {
+    rafThrottle,
+    arbitraryColorFromID,
+    getMergedBound
 } from "../common/utils.js";
 import { EventEmitter } from "../common/event.js";
 import { Tree } from "./node/Tree.js";
@@ -230,36 +230,43 @@ export class Scene {
      */
     bindEvent() {
         const animatedTreeNodes = this.animatedTreeNodes;
-        const globalEventManager = this.editor.globalEventManager;
+        const nodeEventManager = this.editor.nodeEventManager;
         const relativeLine = this.editor.relativeLine;
         /**
          * 节点hover事件
          */
         for (let [_, detail] of animatedTreeNodes) {
-            globalEventManager.add('move', {
-                cursor: 'pointer',
-                bound: {
-                    x: detail.x,
-                    y: detail.y,
-                    w: detail.w,
-                    h: detail.h
-                }
-            });
+            const { node } = detail;
+            const hasHover = !!node.fromId;
+            if (hasHover) {
+                nodeEventManager.add('move', {
+                    cursor: 'pointer',
+                    bound: {
+                        x: detail.x,
+                        y: detail.y,
+                        w: detail.w,
+                        h: detail.h
+                    }
+                });
+            }
         }
 
         const visit = (id, cb) => {
             const nNode = this.animatedTreeNodes.get(id);
             if (!nNode) return;
             const node = nNode.node;
-            globalEventManager.add('down', {
-                bound: {
-                    x: nNode.x,
-                    y: nNode.y,
-                    w: nNode.w,
-                    h: nNode.h
-                },
-                action: (e) => cb(node.id)
-            });
+            const hasDown = !!node.fromId;
+            if (hasDown) {
+                nodeEventManager.add('down', {
+                    bound: {
+                        x: nNode.x,
+                        y: nNode.y,
+                        w: nNode.w,
+                        h: nNode.h
+                    },
+                    action: (e) => cb(node.id)
+                });
+            }
             for (const child of node.children) {
                 visit(child, cb);
             }
