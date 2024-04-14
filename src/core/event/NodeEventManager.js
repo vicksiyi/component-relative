@@ -31,7 +31,7 @@ export class NodeEventManager {
     bindEvent() {
         if (this.isInit) return;
         this.isInit = true;
-        
+
         const {
             windowEventManager,
             canvasDragger,
@@ -67,16 +67,26 @@ export class NodeEventManager {
         canvasDragger.on('up', () => {
             const bound = dragBox.bound;
             const animatedTreeNodes = scene.animatedTreeNodes;
+            let existCount = 0;
+            let impactIds = [];
             for (let [_, detail] of animatedTreeNodes) {
                 const { x, y, node: { id } } = detail;
                 if (isInBound(bound, { x, y })) {
+                    impactIds.push(id);
                     if (relativeLine.has(id)) {
-                        relativeLine.remove(id);
-                    } else {
-                        relativeLine.active(id);
+                        ++existCount;
                     }
                 }
             }
+            const isRemove = existCount > (impactIds.length - existCount);
+            const cb = isRemove
+                ? (id) => {
+                    relativeLine.remove(id);
+                }
+                : (id) => {
+                    relativeLine.active(id);
+                };
+            impactIds.forEach(cb);
         })
     }
 }
