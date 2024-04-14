@@ -2,11 +2,15 @@ import { ViewportManager } from "./ViewportManager.js";
 import { ZoomManager } from "./ZoomManager.js";
 import { Setting } from "./Setting.js";
 import { Scene } from "./Scene.js";
-import { HostEventManager } from "./HostEventManager.js";
 import { Ruler } from "./Ruler.js";
 import { RelativeLine } from "./RelativeLine.js";
-import { GlobalEventManager } from "./event/GlobalEventManager.js";
-import { NodeEventManager } from "./event/NodeEventManager.js";
+import {
+    EventManager,
+    NodeEventManager,
+    CanvasDragger,
+    HostEventManager
+} from "./event/index.js";
+import { DragBox } from "./DragBox.js";
 import { viewportCoordsToSceneUtil } from "../common/utils.js";
 
 export class Editor {
@@ -27,11 +31,17 @@ export class Editor {
         this.zoomManager = new ZoomManager(this);
 
         this.hostEventManager = new HostEventManager(this);
-        this.globalEventManager = new GlobalEventManager(this);
+        this.windowEventManager = new EventManager(this, window);
+        this.sceneEventManager = new EventManager(this, this.canvasElement);
+        this.canvasDragger = new CanvasDragger(this);
         this.nodeEventManager = new NodeEventManager(this);
+        
+        
+        this.dragBox = new DragBox(this);
         this.relativeLine = new RelativeLine(this);
         this.ruler = new Ruler(this);
         this.hostEventManager.bindHotkeys();
+        this.nodeEventManager.bindEvent();
 
         this.viewportManager.setViewport({
             x: 0,

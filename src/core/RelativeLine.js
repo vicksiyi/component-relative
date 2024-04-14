@@ -36,13 +36,15 @@ export class RelativeLine {
             if (!to) continue;
             const endNode = animatedTreeNodes.get(to);
             if (!endNode) continue;
+            ctx.save();
             const color = arbitraryColorFromID(startNode.node.id);
             ctx.strokeStyle = color;
+            ctx.shadowColor = 'white';
+            ctx.shadowBlur = 1; // 设置阴影模糊度
             ctx.beginPath();
             ctx.moveTo(startNode.x, startNode.y);
             ctx.quadraticCurveTo(endNode.x, startNode.y, endNode.x, endNode.y);
             ctx.stroke();
-            ctx.save();
             ctx.translate(endNode.x, endNode.y - 1);
             ctx.fillStyle = color;
             ctx.beginPath();

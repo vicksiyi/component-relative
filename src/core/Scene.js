@@ -61,6 +61,8 @@ export class Scene {
 
         /** drawing relativeLines */
         this.editor.relativeLine.draw();
+        /** drawing dragBox */
+        this.editor.dragBox.draw();
         /** drawing rulers */
         if (setting.get('enableRuler')) {
             this.editor.ruler.draw();

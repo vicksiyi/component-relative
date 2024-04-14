@@ -1,4 +1,4 @@
-import { EventEmitter } from "../common/event.js";
+import { EventEmitter } from "../../common/event.js";
 /**
  * 按键、鼠标等事件管理
  */

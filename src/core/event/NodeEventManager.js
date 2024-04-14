@@ -8,7 +8,6 @@ export class NodeEventManager {
     isInit = false;
     constructor(editor) {
         this.editor = editor;
-        this.initListener();
     }
     /**
      * data:
@@ -29,9 +28,18 @@ export class NodeEventManager {
         }
         if (events) events.push(data);
     }
-    initListener() {
-        const editor = this.editor;
-        editor.globalEventManager.on('global-move', (e) => {
+    bindEvent() {
+        if (this.isInit) return;
+        this.isInit = true;
+        
+        const {
+            windowEventManager,
+            canvasDragger,
+            dragBox,
+            scene,
+            relativeLine
+        } = this.editor;
+        windowEventManager.on('move', (e) => {
             const events = this.moves;
             const cursorXY = this.editor.getCursorXY(e);
             const { x, y } = this.editor.viewportCoordsToScene(cursorXY.x, cursorXY.y);
@@ -44,7 +52,7 @@ export class NodeEventManager {
             }
             document.body.style.cursor = 'auto';
         });
-        editor.globalEventManager.on('global-down', e => {
+        windowEventManager.on('down', e => {
             const events = this.downs;
             const cursorXY = this.editor.getCursorXY(e);
             const { x, y } = this.editor.viewportCoordsToScene(cursorXY.x, cursorXY.y);
@@ -56,5 +64,19 @@ export class NodeEventManager {
                 }
             }
         });
+        canvasDragger.on('up', () => {
+            const bound = dragBox.bound;
+            const animatedTreeNodes = scene.animatedTreeNodes;
+            for (let [_, detail] of animatedTreeNodes) {
+                const { x, y, node: { id } } = detail;
+                if (isInBound(bound, { x, y })) {
+                    if (relativeLine.has(id)) {
+                        relativeLine.remove(id);
+                    } else {
+                        relativeLine.active(id);
+                    }
+                }
+            }
+        })
     }
 }

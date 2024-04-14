@@ -1,12 +1,16 @@
 import { EventEmitter } from "../../common/event.js";
 
-export class GlobalEventManager {
+/**
+ * 元素事件管理
+ */
+export class EventManager {
     moves = []; // mousemove 事件
     downs = []; // mousedown 事件
     isInit = false;
     eventEmitter = new EventEmitter();
-    constructor(editor) {
+    constructor(editor, target) {
         this.editor = editor;
+        this.target = target ?? window;
         this.initListener();
     }
     clear() {
@@ -18,9 +22,10 @@ export class GlobalEventManager {
          */
         if (this.isInit) return;
         this.isInit = true;
-        onmousemove = e => this.eventEmitter.emit('global-move', e);
-        onmousedown = e => this.eventEmitter.emit('global-down', e);
-        onmouseup = e => this.eventEmitter.emit('global-up', e);
+        const target = this.target;
+        target.onmousemove = e => this.eventEmitter.emit('move', e);
+        target.onmousedown = e => this.eventEmitter.emit('down', e);
+        target.onmouseup = e => this.eventEmitter.emit('up', e);
     }
     on(eventName, cb) {
         this.eventEmitter.on(eventName, cb);
