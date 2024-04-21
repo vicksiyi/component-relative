@@ -1,0 +1,14 @@
+{
+  "name": "component-relative",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vicksiyi/component-relative.git",
+  "author": "ZeroIce <tingwei.chen@js.design>",
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^5.2.10"
+  }
+}
