@@ -20,9 +20,13 @@
 <body>
     <script type="module">
         import { Editor } from "./dist/main.js";
-        import data from "./data.json" assert { type: "json" };
-        const editor = new Editor();
-        editor.loadData(data);
+        fetch('./data.json').then(async item => {
+            if (!item.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const editor = new Editor();
+            editor.loadData(await item.json());
+        });
     </script>
 </body>
 
